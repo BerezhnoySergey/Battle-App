@@ -4,6 +4,7 @@ import Battle from "./components/Battle";
 import Popular from "./components/Popular";
 import Navigate from "./components/Navigate";
 import Settings from "./components/Settings";
+import Results from "./components/Results";
 
 const router = createBrowserRouter([
 	{
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
 			{
 				path: "settings",
 				element: <Settings />,
+			},
+			{
+				path: "battle/results",
+				element: <Results />,
 			},
 			{
 				path: "*",

@@ -3,7 +3,7 @@ import { fetchPopularRepos } from "./Api";
 const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Pyton"];
 
 const Popular = () => {
-	const [selectedLanguage, setSelectedLanguage] = useState("All");
+	const [selectedLanguage, setSelectedLanguage] = useState("Ruby");
 	const [repos, setRepos] = useState([]);
 
 	useEffect(() => {

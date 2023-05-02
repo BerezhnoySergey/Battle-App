@@ -54,6 +54,7 @@ export const getUserData = async (username) => {
 	}
 };
 const sortPlayers = (players) => players.sort((a, b) => b.score - a.score);
+
 export const battle = async (players) => {
 	try {
 		const battleResult = await Promise.all(players.map(getUserData));

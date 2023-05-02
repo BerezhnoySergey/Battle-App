@@ -1,10 +1,21 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { battle } from "./Api";
+
 const Results = () => {
 	const location = useLocation();
+
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
-		console.log(params.get("playerOneName", params.get("playerTwoName")));
+
+		const getBattleResults = async () => {
+			const players = await battle([
+				params.get("playerOneName"),
+				params.get("playerTwoName"),
+			]);
+			console.log(players, "players");
+		};
+		getBattleResults();
 	}, []);
 
 	return (

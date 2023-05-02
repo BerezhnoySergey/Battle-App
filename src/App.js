@@ -1,10 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
-import Battle from "./components/Battle";
-import Popular from "./components/Popular";
+import Battle from "./components/Battle/Battle";
+
 import Navigate from "./components/Navigate";
 import Settings from "./components/Settings";
 import Results from "./components/Results";
+import Popular from "./components/Popular/Popular";
 
 const router = createBrowserRouter([
 	{

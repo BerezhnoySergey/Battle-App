@@ -1,6 +1,6 @@
 import { useState } from "react";
-import PlayerInput from "./PlayerInput";
-import PlayerPreview from "./PlayerPreview";
+import PlayerInput from "../PlayerInput";
+import PlayerPreview from "../Battle/PlayerPreview";
 import { Link } from "react-router-dom";
 
 const Battle = () => {

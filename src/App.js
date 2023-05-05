@@ -4,7 +4,7 @@ import Battle from "./components/Battle/Battle";
 
 import Navigate from "./components/Navigate";
 import Settings from "./components/Settings";
-import Results from "./components/Results";
+import Results from "./components/Battle/Results";
 import Popular from "./components/Popular/Popular";
 
 const router = createBrowserRouter([

@@ -144,3 +144,43 @@ li {
 .reset:hover {
 	cursor: pointer;
 }
+.player__info {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+.player__info-data {
+	font-size: 16px;
+	margin: 5px;
+	font-weight: bold;
+}
+.player__info-data_winner {
+	margin-top: 15px;
+	font-size: 32px;
+	font-weight: bold;
+	color: #d0021b;
+}
+.animation {
+	background-image: url("./components/error/img/404_animation.gif");
+	width: 730px;
+	height: 530px;
+}
+.animation__wrap {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.error__link {
+	margin-top: 15px;
+	font-size: 32px;
+	font-weight: bold;
+	color: #d0021b;
+}
+.results {
+	margin-top: 15px;
+	font-size: 32px;
+	font-weight: bold;
+	color: #d0021b;
+	text-align: center;
+}

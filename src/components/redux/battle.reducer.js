@@ -1,8 +1,5 @@
 const initialState = {
 	userName: "",
-};
-
-const initialState2 = {
 	playerData: {
 		playerOneName: "",
 		playerOneImage: null,
@@ -10,6 +7,7 @@ const initialState2 = {
 		playerTwoImage: null,
 	},
 };
+
 export const battleReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case "SET_USER_NAME":
@@ -17,13 +15,6 @@ export const battleReducer = (state = initialState, action) => {
 				...state,
 				userName: action.payload,
 			};
-		default:
-			return state;
-	}
-};
-
-export const battleTwoReducer = (state = initialState2, action) => {
-	switch (action.type) {
 		case "SET_PLAYER_DATA":
 			return {
 				...state,

@@ -4,7 +4,8 @@ const Error = () => {
 	return (
 		<div className="animation__wrap">
 			<Link to={"battle"} className="error__link">
-				Back to battle{" "}
+				{" "}
+				Back to battle
 			</Link>
 			<div className="animation"></div>
 		</div>

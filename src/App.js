@@ -1,11 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
 import Battle from "./components/Battle/Battle";
-
 import Navigate from "./components/Navigate";
 import Settings from "./components/Settings";
 import Results from "./components/Battle/Results";
-import Popular from "./components/Popular/Popular";
+import { IndexPopular } from "./components/Popular";
 
 const router = createBrowserRouter([
 	{
@@ -18,7 +17,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "popular",
-				element: <Popular />,
+				element: <IndexPopular />,
 			},
 			{
 				path: "battle",

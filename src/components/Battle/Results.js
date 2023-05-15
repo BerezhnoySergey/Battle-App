@@ -12,6 +12,7 @@ const Results = () => {
 	const [player, setPlayer] = useState([]);
 	const handleError = (error) => console.error(error);
 	const [error, setError] = useState();
+
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
 

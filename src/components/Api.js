@@ -67,7 +67,7 @@ export const battle = async (players) => {
 	}
 };
 
-export const fetchPopularRepos = (language) => {
+export const getReposRequest = (language) => {
 	const encodeURI = window.encodeURI(
 		`https://api.github.com/search/repositories?q=stars:>1+language:'${language}'&sort=stars&order=desc&type=Repositories`
 	);

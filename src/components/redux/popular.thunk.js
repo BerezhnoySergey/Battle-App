@@ -1,17 +1,14 @@
-import { fetchPopularRepos } from "../Api";
-import {
-	getReposLoading,
-	getReposSuccess,
-	getReposFailure,
-} from "./popular.action";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { getReposRequest } from "../Api";
 
-export const getRepos = (selectedLanguage) => (dispatch) => {
-	dispatch(getReposLoading(true));
-	fetchPopularRepos(selectedLanguage)
-		.then((data) => {
-			dispatch(getReposSuccess(data));
-		})
-		.catch((error) => {
-			dispatch(getReposFailure(error));
-		});
-};
+export const getRepos = createAsyncThunk(
+	"popular/getRepos",
+	async (selectedLanguage, thunkAPI) => {
+		try {
+			const response = await getReposRequest(selectedLanguage);
+			return response;
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.message);
+		}
+	}
+);

@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { fetchPopularRepos } from "../Api";
+import { getReposRequest } from "../Api";
 import { useSearchParams } from "react-router-dom";
 import Loader from "./Loader";
 import Languages from "./Languages";
 import PopularList from "./Popular-List";
 import { useDispatch, useSelector } from "react-redux";
-import { setSelectedLanguage } from "../redux/popular.action";
+// import { setSelectedLanguage } from "../redux/popular.action";
 import { getRepos } from "../redux/popular.thunk";
 
 const Popular = () => {
@@ -18,22 +18,10 @@ const Popular = () => {
 	const selectedLanguage = useSelector(
 		(state) => state.popular.selectedLanguage
 	);
-
-	// useEffect(() => {
-	// 	setIsLoading(true);
-	// 	if (!searchParams.get("lang")) {
-	// 		setSearchParams("lang");
-	// 	}
-	// 	fetchPopularRepos(searchParams.get("lang"))
-	// 		.then((data) => {
-	// 			setRepos(data);
-	// 			setIsLoading(false);
-	// 		})
-	// 		.catch(handleError);
-	// }, [searchParams]);
+	console.log(selectedLanguage);
 
 	useEffect(() => {
-		dispatch(setSelectedLanguage(searchParams.get("lang")));
+		// dispatch(setSelectedLanguage(searchParams.get("lang")));
 	}, [searchParams]);
 
 	useEffect(() => {
@@ -48,7 +36,7 @@ const Popular = () => {
 
 	useEffect(() => {
 		setIsLoading(true);
-		fetchPopularRepos(searchParams.get("lang"))
+		getReposRequest(searchParams.get("lang"))
 			.then((data) => {
 				setRepos(data);
 				setIsLoading(false);

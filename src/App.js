@@ -4,7 +4,7 @@ import Battle from "./components/Battle/Battle";
 import Navigate from "./components/Navigate";
 import Settings from "./components/Settings";
 import Results from "./components/Battle/Results";
-import { IndexPopular } from "./components/Popular";
+import Popular from "./components/Popular/Popular";
 
 const router = createBrowserRouter([
 	{
@@ -17,7 +17,7 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "popular",
-				element: <IndexPopular />,
+				element: <Popular />,
 			},
 			{
 				path: "battle",

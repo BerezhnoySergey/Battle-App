@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { setUserNames } from "../redux/battle.action";
+// import { setUserNames } from "../redux/battle.action";
 import { useDispatch, useSelector } from "react-redux";
 
 const PlayerInput = ({ id, label, onSubmit }) => {
@@ -12,7 +12,7 @@ const PlayerInput = ({ id, label, onSubmit }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		onSubmit(id, userName);
-		dispatch(setUserNames(id, userName));
+		// dispatch(setUserNames(id, userName));
 	};
 
 	return (

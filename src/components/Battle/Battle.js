@@ -1,7 +1,7 @@
 import PlayerInput from "./PlayerInput";
 import PlayerPreview from "../Battle/PlayerPreview";
 import { Link } from "react-router-dom";
-import { setPlayerData } from "../redux/battle.action";
+// import { setPlayerData } from "../redux/battle.action";
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from "react";
 
@@ -9,6 +9,7 @@ const Battle = () => {
 	const dispatch = useDispatch();
 	const playerData = useSelector((state) => state.battle.playerData);
 	console.log(playerData);
+
 	// const [playerData, setPlayerData] = useState({
 	// 	playerOneName: "",
 	// 	playerOneImage: null,
@@ -42,22 +43,22 @@ const Battle = () => {
 	// };
 	const handleSubmit = useCallback(
 		(id, userName) => {
-			dispatch(
-				setPlayerData({
-					id,
-					value: userName,
-				})
-			);
+			// dispatch(
+			// 	setPlayerData({
+			// 		id,
+			// 		value: userName,
+			// 	})
+			// );
 		},
 		[dispatch]
 	);
 
 	const handleReset = (id) => {
-		setPlayerData((prevState) => ({
-			...prevState,
-			[`${id}Name`]: "",
-			[`${id}Image`]: null,
-		}));
+		// setPlayerData((prevState) => ({
+		// 	...prevState,
+		// 	[`${id}Name`]: "",
+		// 	[`${id}Image`]: null,
+		// }));
 	};
 
 	return (

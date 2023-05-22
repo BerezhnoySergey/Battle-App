@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-// import Loader from "./Loader";
+import Loader from "./Loader";
 import Languages from "./Languages";
 import PopularList from "./Popular-List";
-// import Error from "../error/Error";
-// import Loader from "../Popular/Loader";
+import { useSelector } from "react-redux";
 
 const Popular = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
-	// const [isLoading, setIsLoading] = useState(false);
+	const isLoading = useSelector((state) => state.popular.loading);
+
 	useEffect(() => {
 		if (!searchParams.get("lang")) {
 			setSearchParams({ lang: "All" });
@@ -20,9 +20,8 @@ const Popular = () => {
 			<Languages
 				setSearchParams={setSearchParams}
 				searchParams={searchParams}
-				// isLoading={isLoading}
 			/>
-			{<PopularList />}
+			{isLoading ? <Loader /> : <PopularList />}
 		</div>
 	);
 };

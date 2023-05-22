@@ -8,18 +8,6 @@ const Battle = () => {
 	const dispatch = useDispatch();
 	const playerData = useSelector((state) => state.battle.playerData);
 
-	// const handleSubmit = useCallback(
-	// 	(id, userName) => {
-	// 		dispatch(
-	// 			setPlayerData({
-	// 				id,
-	// 				value: userName,
-	// 			})
-	// 		);
-	// 	},
-	// 	[dispatch]
-	// );
-
 	const handleReset = (id) => {
 		dispatch(resetPlayerData(id));
 	};

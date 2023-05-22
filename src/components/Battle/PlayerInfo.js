@@ -33,7 +33,7 @@ const PlayerInfo = ({ player, index }) => {
 					Score {player.score ? player.score : "No data"}
 				</li>
 				<li className="player__info-data_winner">
-					{index === 0 ? "Looser!" : "Winner!"}
+					{index === 0 ? "Winner!" : "Loser!"}
 				</li>
 			</ul>
 		</>

@@ -1,15 +1,13 @@
 import PlayerInput from "./PlayerInput";
 import PlayerPreview from "../Battle/PlayerPreview";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-// import { useCallback } from "react";
-import { setPlayerData } from "../redux/battle.slice";
+import { useDispatch, useSelector } from "react-redux";
+import { resetPlayerData } from "../redux/battle.slice";
 
 const Battle = () => {
-	// const dispatch = useDispatch();
-
+	const dispatch = useDispatch();
 	const playerData = useSelector((state) => state.battle.playerData);
-	console.log(playerData);
+
 	// const handleSubmit = useCallback(
 	// 	(id, userName) => {
 	// 		dispatch(
@@ -23,11 +21,7 @@ const Battle = () => {
 	// );
 
 	const handleReset = (id) => {
-		setPlayerData((prevState) => ({
-			...prevState,
-			[`${id}Name`]: "",
-			[`${id}Image`]: null,
-		}));
+		dispatch(resetPlayerData(id));
 	};
 
 	return (
@@ -35,11 +29,7 @@ const Battle = () => {
 			<div>
 				<div className="row">
 					{!playerData.playerOneImage ? (
-						<PlayerInput
-							id="playerOne"
-							label="Player 1"
-							// onSubmit={handleSubmit}
-						/>
+						<PlayerInput id="playerOne" label="Player 1" />
 					) : (
 						<>
 							<PlayerPreview

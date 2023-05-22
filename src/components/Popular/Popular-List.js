@@ -2,10 +2,6 @@ import { useSelector } from "react-redux";
 
 const PopularList = () => {
 	const repos = useSelector((state) => state.popular.repos);
-	// if (!repos) {
-	// 	return null;
-	// }
-	console.log(repos);
 
 	return (
 		<ul className="popular-list">

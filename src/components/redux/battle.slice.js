@@ -6,11 +6,10 @@ const initialState = {
 		playerOneImage: null,
 		playerTwoName: "",
 		playerTwoImage: null,
-		userName: "",
 	},
 };
 
-export const battleSlice = createSlice({
+const battleSlice = createSlice({
 	name: "battle",
 	initialState,
 	reducers: {
@@ -21,8 +20,15 @@ export const battleSlice = createSlice({
 				[`${action.payload.id}Image`]: `https://github.com/${action.payload.userName}.png?size=200`,
 			};
 		},
+		resetPlayerData(state, action) {
+			state.playerData = {
+				...state.playerData,
+				[`${action.payload}Name`]: "",
+				[`${action.payload}Image`]: null,
+			};
+		},
 	},
 });
 const { actions, reducer } = battleSlice;
-export const { setPlayerData } = actions;
+export const { setPlayerData, resetPlayerData } = actions;
 export default reducer;

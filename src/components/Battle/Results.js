@@ -34,7 +34,6 @@ const Results = () => {
 		getBattleResults();
 	}, []);
 
-	console.log(player, "ss");
 	return (
 		<div>
 			<h2 className="results">Results:</h2>

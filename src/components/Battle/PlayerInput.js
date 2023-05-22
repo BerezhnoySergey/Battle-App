@@ -1,18 +1,18 @@
 import { useState } from "react";
-// import { setUserNames } from "../redux/battle.action";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setPlayerData } from "../redux/battle.slice";
 
-const PlayerInput = ({ id, label, onSubmit }) => {
+const PlayerInput = ({ id, label }) => {
 	const [userName, setUserName] = useState("");
 	const dispatch = useDispatch();
-	const userNamesSelector = (state) => state.userName;
-
-	const userNames = useSelector(userNamesSelector);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		onSubmit(id, userName);
-		// dispatch(setUserNames(id, userName));
+		dispatch(setPlayerData({ id, userName }));
+	};
+
+	const handleInputChange = (event) => {
+		setUserName(event.target.value);
 	};
 
 	return (
@@ -27,7 +27,7 @@ const PlayerInput = ({ id, label, onSubmit }) => {
 				value={userName}
 				id="userName"
 				onChange={(e) => {
-					setUserName(e.target.value);
+					handleInputChange(e);
 				}}
 			/>
 			<button className="button" disabled={!userName} type="submit">

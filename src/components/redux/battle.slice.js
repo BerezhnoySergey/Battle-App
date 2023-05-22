@@ -16,17 +16,13 @@ export const battleSlice = createSlice({
 	reducers: {
 		setPlayerData(state, action) {
 			state.playerData = {
+				...state.playerData,
 				[`${action.payload.id}Name`]: action.payload.userName,
 				[`${action.payload.id}Image`]: `https://github.com/${action.payload.userName}.png?size=200`,
-			};
-		},
-		setUserName(state, action) {
-			state.playerData = {
-				userName: action.payload,
 			};
 		},
 	},
 });
 const { actions, reducer } = battleSlice;
-export const { setPlayerData, setUserName } = actions;
+export const { setPlayerData } = actions;
 export default reducer;

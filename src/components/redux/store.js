@@ -1,7 +1,7 @@
 import { createLogger } from "redux-logger";
 import { configureStore } from "@reduxjs/toolkit";
-import { battleSlice } from "./battle.slice";
-import { popularSlice } from "./popular.slice";
+import battleSlice from "./battle.slice";
+import popularSlice from "./popular.slice";
 
 const logger = createLogger({
 	collapsed: true,

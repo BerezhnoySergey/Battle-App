@@ -1,29 +1,33 @@
-const PopularList = ({ repos }) => {
+import { useSelector } from "react-redux";
+
+const PopularList = () => {
+	const repos = useSelector((state) => state.popular.repos);
+	// if (!repos) {
+	// 	return null;
+	// }
+	console.log(repos);
+
 	return (
 		<ul className="popular-list">
-			{repos.map((repos, index) => {
+			{repos.map((repo, index) => {
 				return (
-					<li key={repos.id} className="popular-item">
+					<li key={repo.id} className="popular-item">
 						<div className="popular rank">#{index + 1}</div>
 						<ul>
 							<li>
 								<img
-									src={repos.owner.avatar_url}
+									src={repo.owner.avatar_url}
 									alt="Avatar"
 									className="avatar"
 								/>
 							</li>
 							<li>
-								<a
-									href={repos.html_url}
-									target="_blank"
-									rel="noreferrer noopener"
-								>
-									{repos.name}
+								<a href={repo.html_url} target="_blank" rel="noreferrer">
+									{repo.name}
 								</a>
 							</li>
-							<li>@{repos.owner.login}</li>
-							<li>{repos.stargazers_count} stars</li>
+							<li>@{repo.owner.login}</li>
+							<li>{repo.stargazers_count} stars</li>
 						</ul>
 					</li>
 				);

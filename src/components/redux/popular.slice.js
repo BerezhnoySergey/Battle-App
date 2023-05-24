@@ -35,10 +35,11 @@ const popularSlice = createSlice({
 			state.repos = action.payload;
 		});
 		builder.addCase(getRepos.pending, (state) => {
-			(state.loading = true), (state.error = null);
+			(state.loading = true)
+			(state.error = null);
 		});
 		builder.addCase(getRepos.rejected, (state, action) => {
-			(state.loading = false),
+			(state.loading = false)
 				(state.error = action.payload ? action.payload : "Unknown error");
 		});
 	},

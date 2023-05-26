@@ -1,4 +1,13 @@
-const PlayerPreview = ({ avatar, userName, children }) => {
+import { ReactElement, FC } from "react";
+
+interface IPlayerPreview {
+	avatar: string
+	userName: string,
+	children: any
+}
+
+
+const PlayerPreview: FC<IPlayerPreview> = ({ avatar, userName, children }): ReactElement => {
 	return (
 		<div>
 			<div className="column">

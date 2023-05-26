@@ -1,4 +1,12 @@
-const PlayerInfo = ({ player, index }) => {
+import { ReactElement,FC } from "react";
+
+interface IPlayerInfo {
+	player: any,
+	index: number,
+}
+
+
+const PlayerInfo: FC<IPlayerInfo> = ({ player, index }): ReactElement => {
 	return (
 		<>
 			<ul className="player__info">

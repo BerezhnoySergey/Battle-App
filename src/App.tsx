@@ -1,10 +1,11 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter,  RouterProvider } from "react-router-dom";
 import Home from "./components/Home";
 import Battle from "./components/Battle/Battle";
 import Navigate from "./components/Navigate";
 import Settings from "./components/Settings";
 import Results from "./components/Battle/Results";
 import Popular from "./components/Popular/Popular";
+import { FC, ReactElement } from "react";
 
 const router = createBrowserRouter([
 	{
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
 	},
 ]);
 
-const App = () => {
+const App: FC	= (): ReactElement => {
 	return (
 		<>
 			<RouterProvider router={router} />

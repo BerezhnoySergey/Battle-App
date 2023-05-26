@@ -1,18 +1,26 @@
-import { useState } from "react";
+import { ReactElement, useState, FC, ChangeEvent, FormEvent } from "react";
 import { useDispatch } from "react-redux";
 import { setPlayerData } from "../redux/battle.slice";
 
-const PlayerInput = ({ id, label }) => {
-	const [userName, setUserName] = useState("");
+
+interface IProps {
+	id: string,
+	label: string,
+	onSubmit:(id: string, userName: string) => void
+
+}
+
+const PlayerInput: FC<IProps> = ({ id, label }): ReactElement => {
+	const [userName, setUserName] = useState<string>("");
 	const dispatch = useDispatch();
 
-	const handleSubmit = (e) => {
+	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 		dispatch(setPlayerData({ id, userName }));
 	};
 
-	const handleInputChange = (event) => {
-		setUserName(event.target.value);
+	const handleInputChange = (event: any ): void => {
+		setUserName(event);
 	};
 
 	return (
@@ -26,8 +34,8 @@ const PlayerInput = ({ id, label }) => {
 				type="text"
 				value={userName}
 				id="userName"
-				onChange={(e) => {
-					handleInputChange(e);
+				onChange={(e: ChangeEvent<HTMLInputElement>): void => {
+					handleInputChange(e.target.value);
 				}}
 			/>
 			<button className="button" disabled={!userName} type="submit">

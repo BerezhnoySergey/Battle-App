@@ -1,11 +1,15 @@
+import { ReactElement,FC } from "react";
 import { useSelector } from "react-redux";
 
-const PopularList = () => {
-	const repos = useSelector((state) => state.popular.repos);
+interface IState {
+	state: string
+}
+const PopularList: FC<IState> = (): ReactElement => {
+	const repos = useSelector((state: any) => state.popular.repos);
 
 	return (
 		<ul className="popular-list">
-			{repos.map((repo, index) => {
+			{repos.map((repo: any, index: number): ReactElement => {
 				return (
 					<li key={repo.id} className="popular-item">
 						<div className="popular rank">#{index + 1}</div>

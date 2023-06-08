@@ -1,22 +1,30 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setSelectedLanguage } from "../redux/popular.slice";
-import { useEffect } from "react";
+import { FC, ReactElement, useEffect } from "react";
 import { getRepos } from "../redux/popular.slice";
+import { SetURLSearchParams} from "react-router-dom";
+import { RootState } from "../redux/store";
+const languages: string[] = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
 
-const languages = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
+interface SearchParamsProps {
+	searchParams: URLSearchParams,
+	setSearchParams: SetURLSearchParams
+}
 
-const Languages = ({ searchParams, setSearchParams }) => {
+
+const Languages: FC<SearchParamsProps> = (searchParams, setSearchParams ): ReactElement => {
 	const dispatch = useDispatch();
 
-	const selectedLanguage = useSelector(
+	const selectedLanguage = useSelector <RootState, string>(
 		(state) => state.popular.selectedLanguage
 	);
 
-	const isLoading = useSelector((state) => state.popular.loading);
+	const isLoading = useSelector<RootState, boolean>((state) => state.popular.loading);
 
-	const changeLang = (language) => {
+	const changeLang = (language: string) => {
 		setSearchParams({ lang: `${language}` });
 	};
+
 	useEffect(() => {
 		dispatch(setSelectedLanguage(searchParams.get("lang")));
 	}, [searchParams]);
@@ -27,7 +35,7 @@ const Languages = ({ searchParams, setSearchParams }) => {
 
 	return (
 		<ul className="languages">
-			{languages.map((language, index) => (
+			{languages.map((language: string, index: number) => (
 				<li
 					key={index}
 					style={{

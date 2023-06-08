@@ -1,4 +1,4 @@
-import { createLogger } from "redux-logger";
+import { createLogger } from 'redux-logger';
 import { configureStore } from "@reduxjs/toolkit";
 import battleSlice from "./battle.slice";
 import popularSlice from "./popular.slice";
@@ -16,3 +16,7 @@ const store = configureStore({
 });
 
 export default store;
+
+
+export type RootState = ReturnType< typeof store.getState>
+export type AppDispatch = typeof store.dispatch

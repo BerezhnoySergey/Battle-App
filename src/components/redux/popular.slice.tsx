@@ -2,20 +2,28 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getReposRequest } from "../Api";
 
-const initialState = {
+interface PopularInitialState {
+	selectedLanguage: string,
+	loading: boolean,
+	error: string | null,
+	repos: [],
+}
+
+
+const initialState: PopularInitialState = {
 	selectedLanguage: "All",
 	loading: false,
 	repos: [],
 	error: null,
 };
 
-export const getRepos = createAsyncThunk(
+export const getRepos = createAsyncThunk <any, string>(
 	"popular/getRepos",
-	async (lang, thunkAPI) => {
+	async (lang: string, thunkAPI)  => {
 		try {
 			const response = await getReposRequest(lang);
 			return response;
-		} catch (error) {
+		} catch (error: any) {
 			return thunkAPI.rejectWithValue(error.message);
 		}
 	}

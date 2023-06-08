@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { battle } from "../Api";
 import PlayerPreview from "./PlayerPreview";
@@ -6,12 +6,15 @@ import Loader from "../Popular/Loader";
 import PlayerInfo from "./PlayerInfo";
 import Error from "../error/Error";
 
+
+
+
 const Results = () => {
 	const location = useLocation();
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [player, setPlayer] = useState([]);
-	const handleError = (error) => console.error(error);
-	const [error, setError] = useState();
+	const handleError = (error: boolean) => console.error(error);
+	const [error, setError] = useState<boolean>();
 
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
@@ -43,7 +46,7 @@ const Results = () => {
 				<Loader />
 			) : (
 				<div className="row">
-					{player.map((player, index) => {
+					{player.map((player: string, index: number) => {
 						return (
 							<PlayerPreview
 								player={player}

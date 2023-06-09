@@ -1,14 +1,20 @@
 import PlayerInput from "./PlayerInput";
-import PlayerPreview from "../Battle/PlayerPreview";
+import PlayerPreview from "./PlayerPreview";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { resetPlayerData } from "../redux/battle.slice";
+import { useAppDispatch, useAppSelector } from "../types/hook";
+import { FC, ReactElement} from "react";
 
-const Battle = () => {
-	const dispatch = useDispatch();
-	const playerData = useSelector((state) => state.battle.playerData);
+interface IPlayerInput {
+id: string,
+label: string
+}
 
-	const handleReset = (id) => {
+const Battle: FC = (): ReactElement => {
+	const dispatch = useAppDispatch();
+	const playerData = useAppSelector((state) => state.battle.playerData);
+
+	const handleReset = (id: string) => {
 		dispatch(resetPlayerData(id));
 	};
 

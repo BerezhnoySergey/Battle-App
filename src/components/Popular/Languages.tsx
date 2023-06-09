@@ -1,9 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
 import { setSelectedLanguage } from "../redux/popular.slice";
 import { FC, ReactElement, useEffect } from "react";
 import { getRepos } from "../redux/popular.slice";
 import { SetURLSearchParams} from "react-router-dom";
-import { RootState } from "../redux/store";
+
+import { useAppSelector, useAppDispatch } from "../types/hook";
+
+
 const languages: string[] = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python"];
 
 interface SearchParamsProps {
@@ -12,14 +14,14 @@ interface SearchParamsProps {
 }
 
 
-const Languages: FC<SearchParamsProps> = (searchParams, setSearchParams ): ReactElement => {
-	const dispatch = useDispatch();
+const Languages: FC<SearchParamsProps> = (searchParams, setSearchParams: any ): ReactElement => {
+	const dispatch = useAppDispatch();
 
-	const selectedLanguage = useSelector <RootState, string>(
+	const selectedLanguage = useAppSelector (
 		(state) => state.popular.selectedLanguage
 	);
 
-	const isLoading = useSelector<RootState, boolean>((state) => state.popular.loading);
+	const isLoading = useAppSelector((state) => state.popular.loading);
 
 	const changeLang = (language: string) => {
 		setSearchParams({ lang: `${language}` });

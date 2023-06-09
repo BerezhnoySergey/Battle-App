@@ -3,12 +3,12 @@ import { useSearchParams, SetURLSearchParams } from "react-router-dom";
 import Loader from "./Loader";
 import Languages from "./Languages";
 import PopularList from "./Popular-List";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+// import { useSelector } from "react-redux";
+import { useAppSelector } from "../types/hook";
 
 const Popular: FC = (): ReactElement => {
 	const [searchParams, setSearchParams]: [URLSearchParams, SetURLSearchParams] = useSearchParams();
-	const isLoading: boolean = useSelector<RootState, boolean>((state) => state.popular.loading);
+	const isLoading: boolean = useAppSelector((state) => state.popular.loading);
 
 	useEffect(() => {
 		if (!searchParams.get("lang")) {

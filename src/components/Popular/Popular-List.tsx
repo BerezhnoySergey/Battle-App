@@ -1,6 +1,5 @@
 import { ReactElement,FC } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import { useAppSelector } from "../types/hook";
 
 export interface PopularRepos {
 	[key: string]: any
@@ -8,7 +7,7 @@ export interface PopularRepos {
 
 
 const PopularList: FC = (): ReactElement => {
-	const repos = useSelector<RootState, PopularRepos[]>((state) => state.popular.repos);
+	const repos = useAppSelector((state) => state.popular.repos);
 
 	return (
 		<ul className="popular-list">

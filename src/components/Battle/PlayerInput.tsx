@@ -1,18 +1,18 @@
 import { ReactElement, useState, FC, ChangeEvent, FormEvent } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../types/hook";
 import { setPlayerData } from "../redux/battle.slice";
 
 
 interface IProps {
 	id: string,
 	label: string,
-	onSubmit:(id: string, userName: string) => void
+	onSubmit:(id: string, userName: string, label: string) => void
 
 }
 
 const PlayerInput: FC<IProps> = ({ id, label }): ReactElement => {
 	const [userName, setUserName] = useState<string>("");
-	const dispatch = useDispatch();
+	const dispatch = useAppDispatch();
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();

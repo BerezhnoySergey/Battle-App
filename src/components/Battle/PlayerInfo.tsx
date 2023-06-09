@@ -1,12 +1,26 @@
 import { ReactElement,FC } from "react";
 
+interface IPlayer {
+	profile: {
+		company: string;
+		location: string;
+		name: string;
+		followers: number;
+		following: number;
+		public_repos: number;
+		blog: string;
+	}
+	score: number
+}
+
+
 interface IPlayerInfo {
-	player: any,
+	player: IPlayer,
 	index: number,
 }
 
 
-const PlayerInfo: FC<IPlayerInfo> = ({ player, index }): ReactElement => {
+const PlayerInfo: FC<IPlayerInfo> = ( {player, index}): ReactElement => {
 	return (
 		<>
 			<ul className="player__info">

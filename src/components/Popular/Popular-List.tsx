@@ -2,16 +2,14 @@ import { ReactElement,FC } from "react";
 import { useAppSelector } from "../types/hook";
 
 export interface PopularRepos {
-	[key: string]: any
+  [key:string]: any
 }
-
-
 const PopularList: FC = (): ReactElement => {
 	const repos = useAppSelector((state) => state.popular.repos);
 
 	return (
 		<ul className="popular-list">
-			{repos.map((repo: PopularRepos, index: number): ReactElement => {
+			{repos.map((repo, index): ReactElement => {
 				return (
 					<li key={repo.id} className="popular-item">
 						<div className="popular rank">#{index + 1}</div>

@@ -5,16 +5,11 @@ import { resetPlayerData } from "../redux/battle.slice";
 import { useAppDispatch, useAppSelector } from "../types/hook";
 import { FC, ReactElement} from "react";
 
-interface IPlayerInput {
-id: string,
-label: string
-}
 
 const Battle: FC = (): ReactElement => {
 	const dispatch = useAppDispatch();
 	const playerData = useAppSelector((state) => state.battle.playerData);
-
-	const handleReset = (id: string) => {
+	const handleReset = (id: string) => () => {
 		dispatch(resetPlayerData(id));
 	};
 
@@ -45,7 +40,6 @@ const Battle: FC = (): ReactElement => {
 						<PlayerInput
 							id="playerTwo"
 							label="Player 2"
-							// onSubmit={handleSubmit}
 						/>
 					) : (
 						<>

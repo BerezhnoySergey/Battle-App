@@ -1,6 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+import {  PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface PayloadActionBattle {
+	id: string;
+	userName: string
+}
+
+
+interface BattleInitialState {
+	playerData :{
+		playerOneName: string,
+		playerOneImage: null | string,
+		playerTwoName: string,
+		playerTwoImage: null | string,
+	}
+
+
+}
+const initialState: BattleInitialState = {
 	playerData: {
 		playerOneName: "",
 		playerOneImage: null,
@@ -13,7 +29,7 @@ const battleSlice = createSlice({
 	name: "battle",
 	initialState,
 	reducers: {
-		setPlayerData(state, action) {
+		setPlayerData(state, action: PayloadAction<PayloadActionBattle>) {
 			state.playerData = {
 				...state.playerData,
 				[`${action.payload.id}Name`]: action.payload.userName,

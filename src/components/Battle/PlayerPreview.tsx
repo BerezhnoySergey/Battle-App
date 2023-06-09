@@ -3,6 +3,7 @@ import { ReactElement, FC } from "react";
 interface IPlayerPreview {
 	avatar: string
 	userName: string,
+	profile: string,
 	children: any
 }
 

@@ -6,7 +6,7 @@ import { setPlayerData } from "../redux/battle.slice";
 interface IProps {
 	id: string,
 	label: string,
-	onSubmit:(id: string, userName: string, label: string) => void
+	// onSubmit:(id: string, userName: string, label: string) => void
 
 }
 
@@ -14,13 +14,13 @@ const PlayerInput: FC<IProps> = ({ id, label }): ReactElement => {
 	const [userName, setUserName] = useState<string>("");
 	const dispatch = useAppDispatch();
 
-	const handleSubmit = (e: FormEvent) => {
+	const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
 		e.preventDefault();
 		dispatch(setPlayerData({ id, userName }));
 	};
 
-	const handleInputChange = (event: any ): void => {
-		setUserName(event);
+	const handleInputChange = (event: ChangeEvent<HTMLInputElement> ): void => {
+		setUserName(event.target.value);
 	};
 
 	return (
@@ -34,8 +34,8 @@ const PlayerInput: FC<IProps> = ({ id, label }): ReactElement => {
 				type="text"
 				value={userName}
 				id="userName"
-				onChange={(e: ChangeEvent<HTMLInputElement>): void => {
-					handleInputChange(e.target.value);
+				onChange={(e) => {
+					handleInputChange(e);
 				}}
 			/>
 			<button className="button" disabled={!userName} type="submit">

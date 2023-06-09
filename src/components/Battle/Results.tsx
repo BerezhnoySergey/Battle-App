@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { FC, ReactElement, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { battle } from "../Api";
 import PlayerPreview from "./PlayerPreview";
@@ -6,15 +6,25 @@ import Loader from "../Popular/Loader";
 import PlayerInfo from "./PlayerInfo";
 import Error from "../error/Error";
 
+interface IMap {
+	profile: {
+		avatar_url: string
+		login: string
+	}
+}
+
+type IPlayerMap = {
+	player: IMap
+}
 
 
+const Results: FC = (): ReactElement => {
 
-const Results = () => {
 	const location = useLocation();
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [player, setPlayer] = useState([]);
-	const handleError = (error: boolean) => console.error(error);
-	const [error, setError] = useState<boolean>();
+	const [player, setPlayer] = useState<IPlayerMap[]>([]);
+	const handleError = (error: Error) => console.error(error);
+	const [error, setError] = useState<boolean>(false);
 
 	useEffect(() => {
 		const params = new URLSearchParams(location.search);
@@ -46,7 +56,7 @@ const Results = () => {
 				<Loader />
 			) : (
 				<div className="row">
-					{player.map((player: string, index: number) => {
+					{player.map((player, index: number) => {
 						return (
 							<PlayerPreview
 								player={player}

@@ -9,7 +9,9 @@ import { FC, ReactElement} from "react";
 const Battle: FC = (): ReactElement => {
 	const dispatch = useAppDispatch();
 	const playerData = useAppSelector((state) => state.battle.playerData);
-	const handleReset = (id: string) => () => {
+
+
+	const handleReset = (id: string): void => {
 		dispatch(resetPlayerData(id));
 	};
 

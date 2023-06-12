@@ -1,10 +1,14 @@
 import { ReactElement, FC } from "react";
 
+	
 interface IPlayerPreview {
+	// children: JSX.Element[] | JSX.Element
 	avatar: string
 	userName: string,
-	profile: string,
-	children: any
+	// player: PlayerProfiles,
+	renderData: JSX.Element[] | JSX.Element,
+	children: ReactElement
+
 }
 
 

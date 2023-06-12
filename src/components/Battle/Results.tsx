@@ -6,17 +6,18 @@ import Loader from "../Popular/Loader";
 import PlayerInfo from "./PlayerInfo";
 import Error from "../error/Error";
 
-interface IMap {
-	profile: {
-		avatar_url: string
-		login: string
-	}
+interface Error {
+	error: string|null
 }
 
-type IPlayerMap = {
-	player: IMap
+type IMap = {
+	[key: string]: any | string
 }
 
+export interface IPlayerMap  {
+	profile: IMap
+}
+export type TotalResBattle = IPlayerMap[]
 
 const Results: FC = (): ReactElement => {
 

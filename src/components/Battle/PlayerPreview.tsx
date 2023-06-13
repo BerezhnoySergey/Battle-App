@@ -5,7 +5,7 @@ interface IPlayerPreview {
 	// children: JSX.Element[] | JSX.Element
 	avatar: string
 	userName: string,
-	// player: PlayerProfiles,
+	// player: string,
 	renderData: JSX.Element[] | JSX.Element,
 	children: ReactElement
 

@@ -1,6 +1,8 @@
 import { setSelectedLanguage } from "../redux/popular.slice";
 import { FC, ReactElement, useEffect } from "react";
 import { getRepos } from "../redux/popular.slice";
+import { SetURLSearchParams} from "react-router-dom";
+
 import { useAppSelector, useAppDispatch } from "../types/hook";
 
 
@@ -8,11 +10,11 @@ const languages: string[] = ["All", "JavaScript", "Ruby", "Java", "CSS", "Python
 
 interface SearchParamsProps {
 	searchParams: URLSearchParams,
-	setSearchParams: (params: URLSearchParams) => void
+	setSearchParams: SetURLSearchParams
 }
 
 
-const Languages: FC<SearchParamsProps> = (searchParams, setSearchParams): ReactElement => {
+const Languages: FC<SearchParamsProps> = ({searchParams, setSearchParams}): ReactElement => {
 	const dispatch = useAppDispatch();
 
 	const selectedLanguage = useAppSelector (
@@ -21,8 +23,8 @@ const Languages: FC<SearchParamsProps> = (searchParams, setSearchParams): ReactE
 
 	const isLoading = useAppSelector((state) => state.popular.loading);
 
-	const changeLang = (language: string) => {
-		setSearchParams({ lang: `${language}` });
+	const changeLang = (language: string): void => {
+		setSearchParams({ lang: `${language}`});
 	};
 
 	useEffect(() => {
@@ -35,7 +37,7 @@ const Languages: FC<SearchParamsProps> = (searchParams, setSearchParams): ReactE
 
 	return (
 		<ul className="languages">
-			{languages.map((language: string, index: number) => (
+			{languages.map((language: string, index: number): ReactElement => (
 				<li
 					key={index}
 					style={{
@@ -46,7 +48,7 @@ const Languages: FC<SearchParamsProps> = (searchParams, setSearchParams): ReactE
 								? "grey"
 								: "#000000",
 					}}
-					onClick={() => (isLoading ? null : changeLang(language))}
+					onClick={() => isLoading ? null : changeLang(language)}
 				>
 					{language}
 				</li>

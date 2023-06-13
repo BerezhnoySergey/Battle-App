@@ -5,11 +5,6 @@ import Languages from "./Languages";
 import PopularList from "./Popular-List";
 import { useAppSelector } from "../types/hook";
 
-// interface SearchParamsProps {
-// 	searchParams: URLSearchParams,
-// 	setSearchParams: (params: URLSearchParams) => void
-// }
-
 
 const Popular: FC = (): ReactElement => {
 	const [searchParams, setSearchParams]= useSearchParams();

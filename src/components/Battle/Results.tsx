@@ -4,27 +4,21 @@ import { battle } from "../Api";
 import PlayerPreview from "./PlayerPreview";
 import Loader from "../Popular/Loader";
 import PlayerInfo from "./PlayerInfo";
-import Error from "../error/Error";
+import  ErrorComponent  from "../error/Error";
 
-interface Error {
-	error: string|null
-}
 
 type IMap = {
 	[key: string]: any | string
 }
-
 export interface IPlayerMap  {
 	profile: IMap
 }
 export type TotalResBattle = IPlayerMap[]
 
 const Results: FC = (): ReactElement => {
-
 	const location = useLocation();
 	const [isLoading, setIsLoading] = useState<boolean>(false);
-	const [player, setPlayer] = useState<IPlayerMap[]>([]);
-	const handleError = (error: Error) => console.error(error);
+	const [players, setPlayers] = useState<IPlayerMap[]>([]);
 	const [error, setError] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -37,27 +31,26 @@ const Results: FC = (): ReactElement => {
 					params.get("playerOneName"),
 					params.get("playerTwoName"),
 				]);
-				setPlayer(players);
+				setPlayers(players);
 			} catch (error) {
-				handleError(error);
-				setError(error);
+				setError(true);
 			} finally {
 				setIsLoading(false);
 			}
 		};
 		getBattleResults();
-	}, []);
+	}, [location]);
 
 	return (
 		<div>
 			<h2 className="results">Results:</h2>
 			{error ? (
-				<Error />
+				<ErrorComponent />
 			) : isLoading ? (
 				<Loader />
 			) : (
 				<div className="row">
-					{player.map((player, index: number) => {
+					{players.map((player, index: number) => {
 						return (
 							<PlayerPreview
 								player={player}

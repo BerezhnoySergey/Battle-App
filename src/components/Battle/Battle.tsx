@@ -48,6 +48,7 @@ const Battle: FC = (): ReactElement => {
 							<PlayerPreview
 								avatar={playerData.playerTwoImage}
 								userName={playerData.playerTwoName}
+								renderData={<button className="reset">Reset</button>}
 							>
 								<button
 									className="reset"
